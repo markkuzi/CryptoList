@@ -16,4 +16,12 @@ class CoinInfoUseCase (private val coinInfoCall: CoinInfoCall) {
     fun loadCoinInfo(): LiveData<List<CoinInfoModel>> {
         return coinInfoCall.loadCoinInfo()
     }
+
+    fun getProgressBarStatus():LiveData<Boolean>{
+        return coinInfoCall.getProgressBarStatus()
+    }
+
+    fun getErrorStatus():LiveData<Boolean>{
+        return coinInfoCall.getErrorStatus()
+    }
 }

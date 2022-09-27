@@ -10,4 +10,9 @@ interface CoinInfoCall {
     suspend fun getCoinInfo(context: Context, nameCoin:String)
 
     fun loadCoinInfo(): LiveData<List<CoinInfoModel>>
+
+    fun getProgressBarStatus() : LiveData<Boolean>
+
+    fun getErrorStatus() : LiveData<Boolean>
+
 }

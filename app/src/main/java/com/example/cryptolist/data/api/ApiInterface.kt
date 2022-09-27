@@ -18,6 +18,7 @@ interface ApiInterface {
     @GET("coins/{id}")
     fun getCoinInfo(
         @Path("id") nameCoin: String,
+        @Query("localization") localization: String = "false",
         @Query("tickers") tickers: Boolean = false,
         @Query("market_data") market_data: Boolean = false,
         @Query("community_data") community_data: Boolean = false,

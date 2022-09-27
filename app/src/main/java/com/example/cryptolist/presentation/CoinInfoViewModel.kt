@@ -15,4 +15,8 @@ class CoinInfoViewModel(private val coinInfoUseCase: CoinInfoUseCase): ViewModel
 
     val loadCoinInfo = coinInfoUseCase.loadCoinInfo()
 
+    val progressBarStatus = coinInfoUseCase.getProgressBarStatus()
+
+    val errorStatus = coinInfoUseCase.getErrorStatus()
+
 }

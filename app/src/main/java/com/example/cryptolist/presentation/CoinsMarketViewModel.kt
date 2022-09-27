@@ -1,20 +1,23 @@
 package com.example.cryptolist.presentation
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.cryptolist.data.models.CoinsMarketModel
+import androidx.lifecycle.*
 import com.example.cryptolist.domain.useCase.CoinsMarketUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CoinsMarketViewModel(private val coinsMarketUseCase: CoinsMarketUseCase): ViewModel() {
 
-    fun getCoinsMarket(context: Context, vs_currency:String) = viewModelScope.launch {
-        coinsMarketUseCase.getCoinsMarket(context, vs_currency)
+    fun getCoinsMarket(context: Context, vs_currency:String, pullRefresh: Boolean) = viewModelScope.launch {
+        coinsMarketUseCase.getCoinsMarket(context, vs_currency, pullRefresh)
     }
 
     val loadCoinsMarket = coinsMarketUseCase.loadCoinsMarket()
 
+    val progressBarStatus = coinsMarketUseCase.getProgressBarStatus()
+
+    val errorStatus = coinsMarketUseCase.getErrorStatus()
+
+
 }
+

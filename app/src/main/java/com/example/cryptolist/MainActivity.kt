@@ -1,8 +1,10 @@
 package com.example.cryptolist
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.LifecycleOwner
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.example.cryptolist.databinding.ActivityMainBinding
 import com.example.cryptolist.presentation.Coins
 import com.example.cryptolist.presentation.CoinsMarketViewModel
@@ -21,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
 
-        coinsMarketViewModel.getCoinsMarket(this, "usd")
+        coinsMarketViewModel.getCoinsMarket(this, "usd", false)
+
 
         supportFragmentManager.beginTransaction().replace(R.id.content, Coins()).commit()
 
@@ -31,4 +34,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 }
