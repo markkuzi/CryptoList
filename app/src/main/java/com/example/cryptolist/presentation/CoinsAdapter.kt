@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptolist.data.models.CoinsMarketModel
 import com.example.cryptolist.databinding.CoinItemBinding
 import com.squareup.picasso.Picasso
+import kotlin.math.roundToInt
 
 class CoinsAdapter(private val showCoinInfo: (String) -> Unit): RecyclerView.Adapter<CoinsAdapter.ProductsHolder>() {
 
@@ -47,7 +48,8 @@ class CoinsAdapter(private val showCoinInfo: (String) -> Unit): RecyclerView.Ada
             currency: String
         ){
 
-            val number2digits:Double = String.format("%.2f", coinsMarketModel.price_change_percentage_24h).toDouble()
+            //val number2digits:Double = String.format("%.2f", coinsMarketModel.price_change_percentage_24h).toDouble()
+            val number2digits:Double = (coinsMarketModel.price_change_percentage_24h * 100.0).roundToInt().toDouble()/100
             binding.nameProduct.text = coinsMarketModel.name
             binding.shortName.text = coinsMarketModel.symbol.uppercase()
             binding.priceCoin.text = coinsMarketModel.current_price.toString()
